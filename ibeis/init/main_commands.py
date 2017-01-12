@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """
+EDITS:
+- Comments added by Joshua Beard for clarity
 TODO: Rename to ibeis/init/commands.py
 
 TODO; remove params module

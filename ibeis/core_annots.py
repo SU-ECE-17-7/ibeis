@@ -46,6 +46,10 @@ Setup:
     >>> depc = ibs.depc_annot
     >>> aid_list = ibs.get_valid_aids()[0:2]
 """
+"""
+EDITS:
+	Comments for clarity by Joshua Beard 1/12/17
+"""
 from __future__ import absolute_import, division, print_function, unicode_literals
 from six.moves import zip
 import dtool
@@ -59,15 +63,15 @@ from ibeis.algo.hots import neighbor_index
 (print, rrr, profile) = ut.inject2(__name__, '[core_annots]')
 
 
-derived_attribute = register_preprocs['annot']
-register_subprop = register_subprops['annot']
+derived_attribute = register_preprocs['annot'] #from ibeis.control.controller_inject
+register_subprop = register_subprops['annot'] #from ibeis.control.controller_inject
 # dtool.Config.register_func = derived_attribute
 
 
 def testdata_core(defaultdb='testdb1', size=2):
     import ibeis
     # import plottool as pt
-    ibs = ibeis.opendb(defaultdb=defaultdb)
+    ibs = ibeis.opendb(defaultdb=defaultdb) # opendb is defined in main_module
     depc = ibs.depc_annot
     aid_list = ut.get_argval(('--aids', '--aid'), type_=list,
                              default=ibs.get_valid_aids()[0:size])

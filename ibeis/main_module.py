@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 """
+EDITS: Joshua Beard
+- comments added for clarity
 This module defines the entry point into the IBEIS system
 ibeis.opendb and ibeis.main are the main entry points
 """
 from __future__ import absolute_import, division, print_function
-from six.moves import builtins
-import sys
-import multiprocessing
+from six.moves import builtins # For py2 & py3 compatability
+import sys # for system calls
+import multiprocessing # for using multi-core processors
 
 PREINIT_MULTIPROCESSING_POOLS = '--preinit' in sys.argv
 QUIET = '--quiet' in sys.argv
@@ -14,12 +16,12 @@ NOT_QUIET = not QUIET
 USE_GUI = '--gui' in sys.argv or '--nogui' not in sys.argv
 
 try:
-    profile = getattr(builtins, 'profile')
+    profile = getattr(builtins, 'profile') # Reference library function
 except AttributeError:
     def profile(func):
         return func
 
-
+# Define behavior for user-called exit
 def _on_ctrl_c(signal, frame):
     proc_name = multiprocessing.current_process().name
     print('[ibeis.main_module] Caught ctrl+c in %s' % (proc_name,))
@@ -35,16 +37,16 @@ def _on_ctrl_c(signal, frame):
 # private init functions
 
 
-def _init_signals():
-    import signal
+def _init_signals(): 
+    import signal	# reference library module
     signal.signal(signal.SIGINT, _on_ctrl_c)
 
 
 def _reset_signals():
-    import signal
+    import signal	# reference library module
     signal.signal(signal.SIGINT, signal.SIG_DFL)  # reset ctrl+c behavior
 
-
+'''IBEIS'''
 def _parse_args():
     from ibeis import params
     params.parse_args()
