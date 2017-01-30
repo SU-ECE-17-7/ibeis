@@ -511,7 +511,7 @@ def compute_probchip(depc, aid_list, config=None):
     for probchip in probchip_result_list:
         yield (probchip,)
 
-
+# j: Convolutional Neural Network?
 def cnn_probchips(ibs, species, probchip_fpath_list, inputchip_fpaths, smooth_thresh, smooth_ksize):
     # dont use extrmargin here (for now)
     mask_gen = ibs.generate_species_background_mask(inputchip_fpaths, species)

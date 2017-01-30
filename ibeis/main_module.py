@@ -271,7 +271,7 @@ def main(gui=True, dbdir=None, defaultdb='cache',
     back = None
     if NOT_QUIET:
         print('[main] ibeis.main_module.main()')
-    _preload()
+    _preload() #default: mpl == True, par == True, logging == True
     DIAGNOSTICS = NOT_QUIET
     if DIAGNOSTICS:
         import os
